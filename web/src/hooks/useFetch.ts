@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 import Person from "../models/Person";
-import ResponseData from "../models/ResponseData";
+import useUpdate from "./useUpdate";
 
 function useFetch(page: number) {
   const [loading, setLoading] = useState(true);
@@ -28,7 +28,7 @@ function useFetch(page: number) {
     }
   }, [page]);
 
-  useEffect(() => {
+  useUpdate(() => {
     sendQuery();
   }, [page, sendQuery]);
 

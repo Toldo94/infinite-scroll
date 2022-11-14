@@ -1,9 +1,8 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 
-import { useQuery } from "@tanstack/react-query";
-
 import useFetch from "../../hooks/useFetch";
+import useUpdate from "../../hooks/useUpdate";
 import TableHeader from "./TableHeader";
 import TableRow from "./TableRow";
 
@@ -22,7 +21,7 @@ const TableContainer = () => {
   const { loading, error, list, count } = useFetch(page);
   const { ref, inView } = useInView();
 
-  useEffect(() => {
+  useUpdate(() => {
     if (inView && (list.length < count || list.length === 0)) {
       setPage((prev) => prev + 1);
     }

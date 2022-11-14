@@ -4,6 +4,7 @@ import json
 
 def main():
     fake = Faker()
+
     data = []
     for i in range(1000000):
         print(i)
